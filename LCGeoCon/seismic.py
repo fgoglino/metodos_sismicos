@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 # =============================================================================
 
 # SIMULATION PARAMETERS
-thicks = [2, 18]
-vels = [300, 1350, 1450]
+thicks = [3, 17]
+vels = [450, 1300, 1800]
 
 sensors1 = np.floor(np.linspace(5,12,8))
 sensors2 = (np.linspace(12 + 12, 12 + 16 * 12,16))
@@ -58,17 +58,19 @@ def traveltimes(thicks, vels, sensors):
 # =============================================================================
 # MAIN FUNCTION BODY
 # =============================================================================
-    
-[tDrct, tRefr] = traveltimes(thicks, vels, sensors)
 
-# PAST THIS POINT, JUST PLOTTING
+[tDrct, tRefr] = traveltimes(thicks, vels, sensors)
+print("1st refraction critical distance: ", xcrit(thicks[0], vels[0], vels[1]))
+print("2nd refraction critical distance: ", xcrit(thicks[1], vels[1], vels[2]))
+
+# PAST THIS POINT, JUST PLOTTING BOILERPLATE
 fig, ax = plt.subplots(figsize=(6, 12))
 
 ax1 = plt.subplot(2,1,1)
 ax1.plot(sensors, tDrct, ".")
 for i in range(0,len(thicks)):
     ax1.plot(sensors, tRefr[i,:], ".")
-ax1.set_title('Caso 4 (Inesperado)')
+ax1.set_title('Caso X')
 ax1.set_ylim([0, 0.2])
 ax1.set_ylabel("Tiempo de arribo (s)")
 ax1.set_xlabel("Distancia hotizontal (m)")
@@ -78,7 +80,7 @@ ax2 = plt.subplot(2,1,2)
 ax2.plot(sensors, tDrct, ".")
 for i in range(0,len(thicks)):
     ax2.plot(sensors, tRefr[i,:], ".")
-ax2.set_title('Caso 4, primeros sensores')
+ax2.set_title('Caso X, primeros sensores')
 ax2.set_ylim([0, 0.04])
 ax2.set_xlim([4, 13])
 ax2.set_ylabel("Tiempo de arribo (s)")
