@@ -60,8 +60,8 @@ def traveltimes(thicks, vels, sensors):
 # =============================================================================
 
 [tDrct, tRefr] = traveltimes(thicks, vels, sensors)
-print("1st refraction critical distance: ", xcrit(thicks[0], vels[0], vels[1]))
-print("2nd refraction critical distance: ", xcrit(thicks[1], vels[1], vels[2]))
+print("1st refraction critical distance: " + str(xcrit(thicks[0], vels[0], vels[1])))
+print("2nd refraction critical distance: " + str(xcrit(thicks[1], vels[1], vels[2])))
 
 # PAST THIS POINT, JUST PLOTTING BOILERPLATE
 fig, ax = plt.subplots(figsize=(6, 12))
